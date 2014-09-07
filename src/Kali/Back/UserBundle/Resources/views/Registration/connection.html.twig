@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    
+{% block meta %}
+<meta name="description" content="Créez votre compte gratuitement sur Testamento.fr" />
+{% endblock %}
+{% block title %}Testamento.fr - Inscrivez-vous{% endblock %}
+
+
+
+
+{#{% form_theme form 'KaliBackBundle:Form:form_errors.html.twig' %}#}
+
+{% block javascripts %}
+<script src="{{ asset('js/password_strength_plugin.js') }}"></script>
+<script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
+<script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('js/jquery.form.min.js') }}"></script>
+{% endblock %}
+</head>
+{% block header_body %}
+<div class="row-fluid">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <h3 class="header-bold"> {{ 'registration.body_header_1'|trans }} <b>{{ 'registration.gratuit'|trans }}</b> {{ 'registration.body_header_2'|trans }}</h3>
+        <div class="login-text">{{ 'registration.header_text_1'|trans }} </div>
+    </div>
+
+    <div class="clear"></div>
+</div>
+
+{% endblock header_body %}
+
+{% block body %}
+<div class="row">
+
+<div class="col-12 col-sm-6 col-md-5 well panel-default">
+    {# app/Resources/views/layout.html.twig #}
+
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    Connecté en tant que {{ app.user.username }} - <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+{% else %}
+    <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+{% endif %}
+        <form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal">
+
+            <h3 class="required">{{ 'registration.existinguser'|trans }}</h3>
+            <br>
+            <div class="form-group">
+                <label class="col-xs-4 control-labell" for="username">{{ 'registration.security.login.email'|trans|raw }}</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                        {% if error %}
+                    <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ error|trans }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-4 control-labell" for="password">{{ 'registration.security.login.password'|trans|raw }}</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="password" id="password" name="_password" required="required" />
+                </div>
+            </div>
+            {#<div class="form-group">
+                <label class="col-xs-4 control-labell" for="forgot_password"></label>
+                <div class="col-sm-8">
+                    <div class="forgot_password" id="forgot_password" name="forgot_password"><a href="{{ path("kali_back_forgotpassword_index") }}" class="links">{{ 'registration.forgot_password'|trans }}</a></div>
+                </div>
+            </div>#}
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            <div class="row-fluid clearfix">
+                <div class="col-xs-4"></div>
+                <div class="col-sm-8">
+                    <input class="btn btn-custom-gray" type="submit" id="_submit" name="_submit" value="{{ 'registration.security.login.submit'|trans }}" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock body %}
+</html>

@@ -1,0 +1,37 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Fiche caracteristique{% endblock %}
+
+{% block body %}
+    <h2>
+        {% if caracteristic.name != "" %}
+            Fiche de la caractéristique {{caracteristic.name}}
+        {% else %}
+            Créer une caractéristique
+        {% endif %}
+    </h2>
+    
+    <p class="text-right">
+        <a class="btn btn-success right" href="{{path("caracteristic_list")}}">Liste des caractéristiques</a>
+    </p>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    {{ form_start(form, { 'attr': {'class': 'form-horizontal'} }) }}
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+        {{ form_label(form.name) }}
+        <div class="col-sm-10">
+            {{ form_widget(form.name) }}
+        </div>
+    </div>
+
+    <input type="submit" value="Sauvegarder" class="btn btn-success"/>
+    {{ form_end(form) }}
+
+{% endblock %}

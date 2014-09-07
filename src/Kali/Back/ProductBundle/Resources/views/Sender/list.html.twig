@@ -1,0 +1,37 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Liste des transporteurs{% endblock %}
+
+{% block body %}
+    <h2>Liste des transporteurs</h2>
+    <p class="text-right">
+        <a class="btn btn-success right" href="{{path("sender_plug")}}">Créer un nouveau transporteur</a>
+    </p>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <table class="table">
+        <tr>
+            <th>Nom</th>
+            <th>Taille maximale (cm)</th>
+            <th>Poids maximal (g)</th>
+            <th>Price (€)</th>
+            <th>Editer</th>
+            <th>Supprimer</th>
+        </tr>
+        {% for sender in senders %}
+            <tr>
+                <td>{{sender.name}}</td>
+                <td>{{sender.maxSize}}</td>
+                <td>{{sender.maxWeight}}</td>
+                <td>{{sender.price}}</td>
+                <td><a class="btn btn-xs btn-success" href="{{path("sender_plug", {id:sender.id})}}">éditer</a></td>
+                <td><a class="btn btn-xs btn-danger" href="{{path("sender_delete", {id:sender.id})}}">supprimer</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Liste des caracteristiques{% endblock %}
+
+{% block body %}
+    <h2>Liste des caractéristiques</h2>
+    <p class="text-right">
+        <a class="btn btn-success right" href="{{path("caracteristic_plug")}}">Créer une nouvelle caractéristique</a>
+    </p>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <table class="table">
+        <tr>
+            <th>Nom</th>
+            <th>Editer</th>
+            <th>Supprimer</th>
+        </tr>
+        {% for caracteristic in caracteristics %}
+            <tr>
+                <td>{{caracteristic.name}}</td>
+                <td><a class="btn btn-xs btn-success" href="{{path("caracteristic_plug", {id:caracteristic.id})}}">éditer</a></td>
+                <td><a class="btn btn-xs btn-danger" href="{{path("caracteristic_delete", {id:caracteristic.id})}}">supprimer</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="pull-left"><a class="btn btn-primary" href="{{path("product_list")}}">Liste des produits</a></div>
+
+{% endblock %}

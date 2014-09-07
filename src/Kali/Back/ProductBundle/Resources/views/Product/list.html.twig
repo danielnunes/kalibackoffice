@@ -1,0 +1,43 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Liste des produits{% endblock %}
+
+{% block body %}
+    <h2>Liste des produits</h2>
+    <p class="text-right">
+        <a class="btn btn-success right" href="{{path("product_plug")}}">Créer un nouveau produit</a>
+    </p>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <table class="table">
+        <tr>
+            <th>Nom</th>
+            <th>Prix (€)</th>
+            <th>Longueur (cm)</th>
+            <th>Largeur (cm)</th>
+            <th>Épaisseur (cm)</th>
+            <th>Poids (g)</th>
+            <th>Editer</th>
+            <th>Supprimer</th>
+        </tr>
+        {% for product in products %}
+            <tr>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.lenght}}</td>
+                <td>{{product.width}}</td>
+                <td>{{product.density}}</td>
+                <td>{{product.weight}}</td>
+                <td><a class="btn btn-xs btn-success" href="{{path("product_plug", {id:product.id})}}">éditer</a></td>
+                <td><a class="btn btn-xs btn-danger" href="{{path("product_delete", {id:product.id})}}">supprimer</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="pull-left"><a class="btn btn-primary" href="{{path("category_list")}}">Liste des catégories</a></div>
+    <div class="pull-left"><a class="btn btn-primary" href="{{path("caracteristic_list")}}">Liste des caractéristiques</a></div>
+
+{% endblock %}

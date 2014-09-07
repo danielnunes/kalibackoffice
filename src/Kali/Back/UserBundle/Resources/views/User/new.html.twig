@@ -1,0 +1,7 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Création d'un utilisateur{% endblock %}
+
+{% block fos_user_content %}
+{% include "KaliBackUserBundle:User:new_content.html.twig" %}
+{% endblock fos_user_content %}

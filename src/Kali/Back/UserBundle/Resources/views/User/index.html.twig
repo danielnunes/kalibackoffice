@@ -1,0 +1,36 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+    <h2>Liste des utilisateurs</h2>
+    <p class="text-right">
+        <a class="btn btn-success right" href="{{ path("user.create") }}">Créer un nouvel utilisateur</a>
+    </p>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice bg-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles[0] }}</td>
+                <td>
+                    <a class="btn btn-xs btn-info" href="{{ path("user.edit", {id:user.id}) }}">Modifier</a>
+                    <a class="btn btn-xs btn-danger" href="{{ path("user.delete", {id:user.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
