@@ -44,7 +44,7 @@ class CaracteristicController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
             $em->persist($caracteristic);
             $em->flush();
 

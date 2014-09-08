@@ -31,7 +31,7 @@ class SenderController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
             $em->persist($sender);
             $em->flush();
 
@@ -70,7 +70,7 @@ class SenderController extends Controller {
         $sender = $this->getDoctrine()
                 ->getRepository("KaliBackProductBundle:Sender")
                 ->find($id);
-        $em->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $em->remove($sender);
         $em->flush();
         return $this->redirect($this->generateUrl("sender_list"));
