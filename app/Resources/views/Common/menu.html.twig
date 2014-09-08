@@ -1,13 +1,21 @@
-
 <ul class="nav navbar-nav">
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Gestion des utilisateurs
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="{{ path("user.list") }}">Liste des utilisateurs</a></li>
+        </ul>
+    </li>
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             Gestion des produits
             <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
-            <li><a href="{{path("product_plug")}}">Créer un produit</a></li>
-            <li><a href="{{path("product_list")}}">Liste des produits</a></li>
+            <li><a href="{{ path("product_plug") }}">Créer un produit</a></li>
+            <li><a href="{{ path("product_list") }}">Liste des produits</a></li>
         </ul>
     </li>
     <li class="dropdown">
@@ -16,12 +24,11 @@
             <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
-            <li><a href="{{path("sender_plug")}}">Créer un transporteur</a></li>
-            <li><a href="{{path("sender_list")}}">Liste des transporteurs</a></li>
+            <li><a href="{{ path("sender_plug") }}">Créer un transporteur</a></li>
+            <li><a href="{{ path("sender_list") }}">Liste des transporteurs</a></li>
         </ul>
     </li>
     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Gestion des clients</a></li>
-    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Gestion du panier et du paiement</a></li>
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Gestion des commandes</a></li>
     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Gestion des paramètres</a></li>
-    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="{{ path("user.list") }}">Gestion des utilisateurs</a></li>
 </ul>
