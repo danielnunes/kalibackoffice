@@ -1,3 +1,8 @@
+kali_rest_user:
+    resource: "@KaliRestUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 kali_rest_default:
     resource: "@KaliRestDefaultBundle/Controller/"
     type:     annotation
@@ -41,3 +46,9 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+
+#REST
+rest :
+    type : rest
+    resource : "routing_rest.yml"
+    prefix : /api

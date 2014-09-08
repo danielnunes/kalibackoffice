@@ -17,12 +17,14 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new FOS\RestBundle\FOSRestBundle(),
             new Kali\Back\UserBundle\KaliBackUserBundle(),
             new Kali\Back\ProductBundle\KaliBackProductBundle(),
             new Kali\Back\ImageBundle\KaliBackImageBundle(),
             new Kali\Back\CommandBundle\KaliBackCommandBundle(),
             new Kali\Rest\DefaultBundle\KaliRestDefaultBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Kali\Rest\UserBundle\KaliRestUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
