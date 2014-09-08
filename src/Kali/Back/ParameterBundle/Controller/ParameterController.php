@@ -22,10 +22,14 @@ class ParameterController extends Controller
 
         $description = $em->getRepository("KaliBackParameterBundle:Parameter")
             ->findOneBy(array("name" => "description"));
+
+        $logo = $em->getRepository("KaliBackParameterBundle:Parameter")
+            ->findOneBy(array("name" => "logo"));
+
         $parameters= $em->getRepository('KaliBackParameterBundle:Parameter')->findAll();
 
 
-        return $this->render('KaliBackParameterBundle:Parameter:index.html.twig', array('parameters' => $parameters, 'slogan' => $slogan, 'description' => $description));
+        return $this->render('KaliBackParameterBundle:Parameter:index.html.twig', array('parameters' => $parameters, 'slogan' => $slogan, 'description' => $description, 'logo' => $logo));
 
     }
 
@@ -43,6 +47,7 @@ class ParameterController extends Controller
         $form = $this->createForm('parameter', $parameters, array('validation_groups' => array('Default')))
             ->add('name', 'slogan')
             ->add('name', 'description')
+            ->add('name', 'logo')
             ->add('submit', 'submit');
 
         return $this->render('KaliBackParameterBundle:Parameter:edit.html.twig', array('form' => $form));

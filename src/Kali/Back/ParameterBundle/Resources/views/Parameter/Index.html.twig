@@ -8,6 +8,7 @@
         <tr style="font-weight: bold;">
             <td>Slogan</td>
             <td>Description</td>
+            <td>Logo</td>
             <td>Action</td>
         </tr>
 
@@ -15,6 +16,7 @@
         <tr>
             <td>{{ slogan.value }}</td>
             <td>{{ description.value }}</td>
+            <td>{{ logo }}</td>
             <td><p><a class="btn btn-primary" href="{{ path('parameter_edit',{ id: parameter.id }) }}">Modifier</a></p></td>
         </tr>
         {% endfor %}

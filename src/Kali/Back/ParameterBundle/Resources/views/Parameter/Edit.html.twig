@@ -14,6 +14,9 @@
         {{ form_label(description.value) }}
         {{ form_widget(description.value, {'attr': {'class': 'form-control'}}) }}
     </div>
+    <div class="form-group">
+        {{ form_row(logo.value,  {'attr': {'class': 'form-control'}}) }}
+    </div>
 
     {{ form_rest(form) }}
     {{ form_end(form) }}
