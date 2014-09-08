@@ -11,7 +11,7 @@ use Kali\Back\ParameterBundle\Entity\Parameter;
 class ParameterController extends Controller
 {
     /**
-     * @Route("parameter")
+     * @Route("parameters", name="parameters")
      * @Template()
      */
     public function IndexAction()
@@ -35,13 +35,14 @@ class ParameterController extends Controller
 
 
     /**
-     * @Route("parameter-edit/{id}", name="parameter_edit")
+     * @Route("parameter-edit/{id}", name="parameter-edit")
      *
      */
-    public function EditAction($id)
+    public function EditAction(Parameter $parameter)
     {
-        $em = $this->getDoctrine()->getManager();
 
+        $em = $this->getDoctrine()->getManager();
+  /*
         $parameters = $em->getRepository('KaliBackParameterBundle:Parameter')->find($id);
 
         $form = $this->createForm('parameter', $parameters, array('validation_groups' => array('Default')))
@@ -52,5 +53,30 @@ class ParameterController extends Controller
 
         return $this->render('KaliBackParameterBundle:Parameter:edit.html.twig', array('form' => $form));
         $form->handleRequest($request);
+
+        */
+        $form = $this->createFormBuilder($parameter)
+            ->setRequired(false)
+            ->setAction($this->generateUrl('parameters'))
+            ->setMethod('GET')
+            ->add('name', 'text', array('label' => 'Slogan'))
+            ->add('value', 'text', array('label' => 'Description'))
+            ->add('valider', 'submit')
+
+            ->getForm();
+
+        if ($form->isValid()){
+
+            $em->flush();
+            return $this->redirect($this->generateUrl('nouveau', array('form' => $form->createView())
+            ));
+        }
+
+        return $this->render('KaliBackParameterBundle:Parameter:nouveau.html.twig', array('form' => $form->createView()
+        ));
+
+
+
+
     }
 }

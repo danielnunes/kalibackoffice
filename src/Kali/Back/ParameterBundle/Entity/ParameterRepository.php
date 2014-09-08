@@ -13,17 +13,7 @@ use Doctrine\ORM\EntityRepository;
 class ParameterRepository extends EntityRepository
 {
 
-    public function find($id)
-    {
-        return $this->getEntityManager()
-
-            ->createQuery('SELECT u FROM KaliBackParameterBundle:Parameter u')
-            ->where ('u.id = :id')
-            ->getResult();
-
-
-
-    }
+    
 
 
 }

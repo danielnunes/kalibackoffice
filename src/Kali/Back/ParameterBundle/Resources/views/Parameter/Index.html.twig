@@ -16,8 +16,8 @@
         <tr>
             <td>{{ slogan.value }}</td>
             <td>{{ description.value }}</td>
-            <td>{{ logo }}</td>
-            <td><p><a class="btn btn-primary" href="{{ path('parameter_edit',{ id: parameter.id }) }}">Modifier</a></p></td>
+            <td><input type="file" name="web/images/" multiple></td>
+            <td><p><a class="btn btn-primary" href="{{ path('parameter-edit',{ id: parameter.id }) }}">Modifier</a></p></td>
         </tr>
         {% endfor %}
 
