@@ -6,7 +6,7 @@ security:
         ROLE_CLIENT:            ROLE_CLIENT
         ROLE_SERVICE_CLIENT :   ROLE_SERVICE_CLIENT
         ROLE_SERVICE_PRODUCT :  ROLE_SERVICE_PRODUCT
-        ROLE_ADMIN_KALI:        ROLE_ADMIN_KALI
+        ROLE_ADMIN:             ROLE_ADMIN
 
     providers:
         fos_userbundle:
