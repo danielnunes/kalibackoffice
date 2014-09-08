@@ -3,7 +3,7 @@ security:
         FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
-        ROLE_CLIENT:            ROLE_CLIENT
+        ROLE_CLIENT:            ROLE_USER
         ROLE_SERVICE_CLIENT :   ROLE_SERVICE_CLIENT
         ROLE_SERVICE_PRODUCT :  ROLE_SERVICE_PRODUCT
         ROLE_ADMIN:             ROLE_ADMIN
