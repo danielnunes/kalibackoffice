@@ -1,3 +1,13 @@
+kali_rest_default:
+    resource: "@KaliRestDefaultBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+kali_back_command:
+    resource: "@KaliBackCommandBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 kali_back_image:
     resource: "@KaliBackImageBundle/Controller/"
     type:     annotation

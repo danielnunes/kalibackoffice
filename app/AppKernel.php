@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new Kali\Back\UserBundle\KaliBackUserBundle(),
             new Kali\Back\ProductBundle\KaliBackProductBundle(),
             new Kali\Back\ImageBundle\KaliBackImageBundle(),
+            new Kali\Back\CommandBundle\KaliBackCommandBundle(),
+            new Kali\Rest\DefaultBundle\KaliRestDefaultBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
