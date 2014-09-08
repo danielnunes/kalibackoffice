@@ -1,0 +1,21 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+<h1>Editer les paramètres</h1>
+
+
+    {{ form_start(form) }}
+
+    <div class="form-group">
+        {{ form_label(slogan.value) }}
+        {{ form_widget(slogan.value, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(description.value) }}
+        {{ form_widget(description.value, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -6,11 +6,11 @@
 
     <!--
     <parameters>
-        <parameter key="kali_back_command.example.class">Kali\Back\CommandBundle\Example</parameter>
+        <parameter key="parameter.example.class">Back\ParameterBundle\Example</parameter>
     </parameters>
 
     <services>
-        <service id="kali_back_command.example" class="%kali_back_command.example.class%">
+        <service id="parameter.example" class="%parameter.example.class%">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>

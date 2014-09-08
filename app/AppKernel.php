@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Kali\Back\UserBundle\KaliBackUserBundle(),
             new Kali\Back\ProductBundle\KaliBackProductBundle(),
             new Kali\Back\ImageBundle\KaliBackImageBundle(),
+            new Kali\Back\ParameterBundle\KaliBackParameterBundle(),
             new Kali\Back\CommandBundle\KaliBackCommandBundle(),
             new Kali\Rest\DefaultBundle\KaliRestDefaultBundle(),
             new FOS\RestBundle\FOSRestBundle(),

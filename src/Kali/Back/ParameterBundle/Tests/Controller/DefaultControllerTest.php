@@ -1,6 +1,6 @@
 <?php
 
-namespace Kali\Back\CommandBundle\Tests\Controller;
+namespace Back\ParameterBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

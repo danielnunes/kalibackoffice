@@ -1,0 +1,25 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+<h2>Gestion des paramètres</h2>
+
+    <table class="table-striped table table-bordered">
+        <tr style="font-weight: bold;">
+            <td>Slogan</td>
+            <td>Description</td>
+            <td>Action</td>
+        </tr>
+
+        {% for parameter in parameters %}
+        <tr>
+            <td>{{ slogan.value }}</td>
+            <td>{{ description.value }}</td>
+            <td><p><a class="btn btn-primary" href="{{ path('parameter_edit',{ id: parameter.id }) }}">Modifier</a></p></td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+
+{% endblock %}
