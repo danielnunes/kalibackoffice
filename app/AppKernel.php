@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
             new Kali\Back\UserBundle\KaliBackUserBundle(),
             new Kali\Back\ProductBundle\KaliBackProductBundle(),
             new Kali\Back\ImageBundle\KaliBackImageBundle(),
