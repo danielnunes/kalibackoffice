@@ -2,11 +2,18 @@
 
 namespace Kali\Back\UserBundle\Form\Type;
 
+use Kali\Back\UserBundle\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class UserFormType extends AbstractType
 {
+    private $roles;
+    
+    function __construct($roles) {
+        $this->roles = $roles;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -17,17 +24,11 @@ class UserFormType extends AbstractType
                 'second_options' => array('label' => 'Confirmation'),
                 'invalid_message' => 'Les mots de passe ne correspondent pas.',
             ))
-            ->add('roles', 'collection', array(
-                    'type' => 'choice',
-                    'options' => array(
-                        'label' => false,
-                        'choices' => array(
-                            'ROLE_ADMIN' => 'Admin',
-                            'ROLE_SERVICE_CLIENT' => 'Service Client',
-                            'ROLE_SERVICE_PRODUCT' => 'Service Produit',
-                            'ROLE_USER' => 'Utilisateur'
-                        )
-                    )
+            ->add('roles', 'choice', array(
+                'choices' => $this->roles,
+                'label' => 'Roles',
+                'expanded' => true,
+                'multiple' => true,
                 )
             );
     }

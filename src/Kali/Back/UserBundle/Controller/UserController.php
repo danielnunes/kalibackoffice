@@ -39,9 +39,10 @@ class UserController extends Controller
         /* @var $userManager UserManager */
         $userManager = $this->get('fos_user.user_manager');
         $user = $userManager->createUser();
+        $roles = array_keys($this->container->getParameter('security.role_hierarchy.roles'));
 
         /* Création du formulaire */
-        $form = $this->createForm(new UserFormType(), $user);
+        $form = $this->createForm(new UserFormType($roles), $user);
 
         /* Récupération de la requête */
         $request = $this->get('request');
@@ -75,9 +76,10 @@ class UserController extends Controller
         /* @var $userManager UserManager */
         $userManager = $this->get('fos_user.user_manager');
         $user = $userManager->findUserBy(array('id' => $id));
+        $roles = array_keys($this->container->getParameter('security.role_hierarchy.roles'));
 
         /* Création du formulaire */
-        $form = $this->createForm(new UserFormType(), $user);
+        $form = $this->createForm(new UserFormType($roles), $user);
 
         /* Récupération de la requête */
         $request = $this->get('request');
