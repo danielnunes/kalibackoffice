@@ -2,7 +2,7 @@
 
 // Kali/BackBundle/Form/Type/PictureType.php
 
-namespace Kali\BackBundle\Form\Type;
+namespace Kali\Back\ImageBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

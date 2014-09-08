@@ -109,14 +109,12 @@ class Product
      */
     private $productCommands;
     
-    
     /**
-     * @var Ecotax
+     * @var boolean
      * 
-     * @ORM\ManyToOne(targetEntity="Ecotax", inversedBy="products")
-     * @ORM\JoinColumn(name="ecotax_id", referencedColumnName="id")
+     * @ORM\Column(name="ecoParticipation", type="boolean", nullable=true)
      */
-    private $ecotax;
+    private $ecoParticipation;
     
     function __construct() {
         $this->caracteristics = new ArrayCollection();
@@ -251,13 +249,6 @@ class Product
     public function setPictures($pictures) {
         $this->pictures = $pictures;
     }
-    public function getEcotax() {
-        return $this->ecotax;
-    }
-
-    public function setEcotax(Ecotax $ecotax) {
-        $this->ecotax = $ecotax;
-    }
     
     public function getCategories() {
         return $this->categories;
@@ -295,6 +286,14 @@ class Product
 
     public function setWidth($width) {
         $this->width = $width;
+    }
+
+    public function getEcoParticipation() {
+        return $this->ecoParticipation;
+    }
+
+    public function setEcoParticipation($ecoParticipation) {
+        $this->ecoParticipation = $ecoParticipation;
     }
 
 

@@ -3,7 +3,7 @@
 {% block title %}Gallerie de {{product.name}}{% endblock %}
 
 {% block body %}
-    {% include"KaliBackBundle:Product:menuProduct.html.twig" with {'id' : product.id} %}
+    {% include"KaliBackProductBundle:Product:menuProduct.html.twig" with {'id' : product.id} %}
     <h2>Gallerie de {{product.name}}</h2>
 
     {% for flashMessage in app.session.flashbag.get('notice') %}

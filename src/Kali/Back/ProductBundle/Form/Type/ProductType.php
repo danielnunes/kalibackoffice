@@ -1,5 +1,7 @@
 <?php
 
+// Kali/Back/ProductBundle/Form/Type/ProductType.php
+
 namespace Kali\Back\ProductBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
@@ -38,13 +40,18 @@ class ProductType extends AbstractType {
                     'label_attr' => array('class' => 'col-sm-2 control-label'),
                 ))
                 ->add('weight', 'number', array(
-                    'label' => "Weight (g)",
+                    'label' => "Weight (kg)",
                     'precision' => 2,
                     'label_attr' => array('class' => 'col-sm-2 control-label'),
                 ))
                 ->add('stock', 'integer', array(
                     'label' => "Stock",
                     'label_attr' => array('class' => 'col-sm-2 control-label'),
+                ))
+                ->add('ecoParticipation', 'checkbox', array(
+                    'label' => "Eco participation",
+                    'label_attr' => array('class' => 'col-sm-2 control-label'),
+                    'required' => false,
         ));
     }
 

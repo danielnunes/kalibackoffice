@@ -1,0 +1,34 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Liste des promotions{% endblock %}
+
+{% block body %}
+    <h2>Liste des promotions</h2>
+    <p class="text-right">
+        <a class="btn btn-success right" href="{{path("promotion_plug")}}">Créer une nouvelle promotion</a>
+    </p>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <table class="table">
+        <tr>
+            <th>Numéro</th>
+            <th>Pourcentage de réduction</th>
+            <th>Editer</th>
+            <th>Supprimer</th>
+        </tr>
+        {% for promotion in promotions %}
+            <tr>
+                <td>{{promotion.number}}</td>
+                <td>{{promotion.value}}</td>
+                <td><a class="btn btn-xs btn-success" href="{{path("promotion_plug", {id:promotion.id})}}">éditer</a></td>
+                <td><a class="btn btn-xs btn-danger" href="{{path("promotion_delete", {id:promotion.id})}}">supprimer</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="pull-left"><a class="btn btn-primary" href="{{path("promotion_list")}}">Liste des promotions</a></div>
+
+{% endblock %}

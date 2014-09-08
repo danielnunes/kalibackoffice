@@ -66,6 +66,15 @@ class Command
      * @ORM\OneToMany(targetEntity="ProductCommand", mappedBy="command")
      */
     private $productCommands;
+    
+    /**
+     *
+     * @var Promotion
+     *  
+     * @ORM\OneToOne(targetEntity="Promotion", inversedBy="command")
+     * @ORM\JoinColumn(name="command_id", referencedColumnName="id", nullable=true)
+     */
+    private $promotion;
 
     function __construct()
     {
@@ -180,5 +189,13 @@ class Command
     public function setUser(User $user)
     {
         $this->user = $user;
+    }
+    
+    public function getPromotion() {
+        return $this->promotion;
+    }
+
+    public function setPromotion(Promotion $promotion) {
+        $this->promotion = $promotion;
     }
 }

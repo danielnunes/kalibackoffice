@@ -4,13 +4,13 @@
 
 {% block body %}
     {% if product.name != "" %}
-        {% include"KaliBackBundle:Product:menuProduct.html.twig" with {'id' : product.id} %}
+        {% include"KaliBackProductBundle:Product:menuProduct.html.twig" with {'id' : product.id} %}
     {% endif %}
     <h1>
         {% if product.name != "" %}
             Fiche du produit {{product.name}}
         {% else %}
-            Créer un produit
+            CrÃ©er un produit
         {% endif %}
     </h1>
     <p class="text-right">
@@ -75,11 +75,17 @@
         </div>
     </div>
 
-
     <div class="form-group">
         {{ form_label(form.stock) }}
         <div class="col-sm-10">
             {{ form_widget(form.stock) }}
+        </div>
+    </div>
+    
+    <div class="form-group">
+        {{ form_label(form.ecoParticipation) }}
+        <div class="col-sm-10">
+            {{ form_widget(form.ecoParticipation) }}
         </div>
     </div>
 

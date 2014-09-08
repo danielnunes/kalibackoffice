@@ -2,16 +2,16 @@
 
 namespace Kali\Back\ProductBundle\Controller;
 
+use Kali\Back\ImageBundle\Entity\Picture;
+use Kali\Back\ProductBundle\Entity\Product;
+use Kali\Back\ProductBundle\Form\Type\CaracteristicProductType;
+use Kali\Back\ProductBundle\Form\Type\CategoryProductType;
+use Kali\Back\ImageBundle\Form\Type\PictureType;
+use Kali\Back\ProductBundle\Form\Type\ProductType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Kali\Back\ProductBundle\Entity\Product;
-use Kali\Back\ProductBundle\Entity\Picture;
-use Kali\Back\ProductBundle\Form\Type\ProductType;
-use Kali\Back\ProductBundle\Form\Type\PictureType;
-use Kali\Back\ProductBundle\Form\Type\CategoryProductType;
-use Kali\Back\ProductBundle\Form\Type\CaracteristicProductType;
 
 /**
  * @Route("/product")
