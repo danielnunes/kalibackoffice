@@ -1,3 +1,8 @@
+kali_rest_rest:
+    resource: "@KaliRestRestBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 kali_rest_user:
     resource: "@KaliRestUserBundle/Controller/"
     type:     annotation

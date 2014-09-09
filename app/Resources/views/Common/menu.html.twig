@@ -33,6 +33,12 @@
                     <li><a href="{{ path("product_list") }}">Liste des produits</a></li>
                     <li><a href="{{ path("product_plug") }}">Créer un produit</a></li>
                     <li class="divider"></li>
+                    <li><a href="{{ path("category_list") }}">Liste des catégories</a></li>
+                    <li><a href="{{ path("category_plug") }}">Créer une catégorie</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{{ path("caracteristic_list") }}">Liste des caractéristiques</a></li>
+                    <li><a href="{{ path("caracteristic_plug") }}">Créer une caractéristique</a></li>
+                    <li class="divider"></li>
                     <li><a href="{#{ path("promotion_list") }#}">Liste des commandes</a></li>
                     <li class="divider"></li>
                     <li><a href="{{ path("promotion_list") }}">Liste des coupon de réduction</a></li>
@@ -48,8 +54,11 @@
                     <li><a href="{{ path("sender_plug") }}">Créer un transporteur</a></li>
                 </ul>
             </li>
-            <li>
-                <a href="{#{ path("params.list") }#}">Gestion des paramètres</a>
+            <li class="dropdown">
+                <a href="{#{ path("sender_list") }#}" class="dropdown-toggle" data-toggle="dropdown">Gestion des paramètres<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="{{ path("slider_plug") }}">Images slider</a></li>
+                </ul>
             </li>
         {% endif %}
     </ul>

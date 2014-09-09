@@ -11,7 +11,7 @@ class ProductType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('name', 'text', array(
-                    'label' => "Name",
+                    'label' => "Nom",
                     'label_attr' => array('class' => 'col-sm-2 control-label'),
                 ))
                 ->add('description', 'textarea', array(
@@ -20,7 +20,7 @@ class ProductType extends AbstractType {
                     'label_attr' => array('class' => 'col-sm-2 control-label'),
                 ))
                 ->add('price', 'number', array(
-                    'label' => "Price (€)",
+                    'label' => "Prix (€)",
                     'precision' => 2,
                     'label_attr' => array('class' => 'col-sm-2 control-label'),
                 ))
@@ -40,7 +40,7 @@ class ProductType extends AbstractType {
                     'label_attr' => array('class' => 'col-sm-2 control-label'),
                 ))
                 ->add('weight', 'number', array(
-                    'label' => "Weight (kg)",
+                    'label' => "Poids (kg)",
                     'precision' => 2,
                     'label_attr' => array('class' => 'col-sm-2 control-label'),
                 ))

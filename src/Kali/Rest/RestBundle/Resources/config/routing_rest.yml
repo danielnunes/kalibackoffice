@@ -1,0 +1,4 @@
+slider :
+  type: rest
+  resource:     "KaliRestRestBundle:Slider"
+  name_prefix:  api_

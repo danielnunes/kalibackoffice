@@ -3,49 +3,48 @@
 {% block title %}Liste des produits{% endblock %}
 
 {% block body %}
-<h2>Liste des produits</h2>
-<p class="text-right">
-    <a class="btn btn-success right" href="{{path("product_plug")}}">Créer un nouveau produit</a>
-</p>
+    <h2>Liste des produits</h2>
+    <p class="text-right">
+        <a class="btn btn-success right" href="{{ path("product_plug") }}">Créer un nouveau produit</a>
+    </p>
     {% for flashMessage in app.session.flashbag.get('notice') %}
-<div class="flash-notice">
+        <div class="flash-notice">
             {{ flashMessage }}
-</div>
+        </div>
     {% endfor %}
 
-<table class="table">
-    <tr>
-        <th>Nom</th>
-        <th>Prix (€)</th>
-        <th>Longueur (cm)</th>
-        <th>Largeur (cm)</th>
-        <th>Épaisseur (cm)</th>
-        <th>Poids (kg)</th>
-        <th>Eco participation</th>
-        <th>Editer</th>
-        <th>Supprimer</th>
-    </tr>
+    <table class="table">
+        <tr>
+            <th>Nom</th>
+            <th>Prix (€)</th>
+            <th>Longueur (cm)</th>
+            <th>Largeur (cm)</th>
+            <th>Épaisseur (cm)</th>
+            <th>Poids (kg)</th>
+            <th>Eco participation</th>
+            <th>Actions</th>
+        </tr>
         {% for product in products %}
-    <tr>
-        <td>{{product.name}}</td>
-        <td>{{product.price}}</td>
-        <td>{{product.lenght}}</td>
-        <td>{{product.width}}</td>
-        <td>{{product.density}}</td>
-        <td>{{product.weight}}</td>
-        <td>
-{% if product.ecoPArticipation == 1 %}
-            oui
-{% else %}
-            non
-{% endif %}
-        </td>
-        <td><a class="btn btn-xs btn-success" href="{{path("product_plug", {id:product.id})}}">Éditer</a></td>
-        <td><a class="btn btn-xs btn-danger" href="{{path("product_delete", {id:product.id})}}">supprimer</a></td>
-    </tr>
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.lenght }}</td>
+                <td>{{ product.width }}</td>
+                <td>{{ product.density }}</td>
+                <td>{{ product.weight }}</td>
+                <td>
+                    {% if product.ecoPArticipation == 1 %}
+                        oui
+                    {% else %}
+                        non
+                    {% endif %}
+                </td>
+                <td>
+                    <a class="btn btn-xs btn-info" href="{{ path("product_gallery", {id:product.id}) }}">Ajouter des images</a>
+                    <a class="btn btn-xs btn-success" href="{{ path("product_plug", {id:product.id}) }}">Éditer</a>
+                    <a class="btn btn-xs btn-danger" href="{{ path("product_delete", {id:product.id}) }}">Supprimer</a>
+                </td>
+            </tr>
         {% endfor %}
-</table>
-<div class="pull-left"><a class="btn btn-primary" href="{{path("category_list")}}">Liste des catégories</a></div>
-<div class="pull-left"><a class="btn btn-primary" href="{{path("caracteristic_list")}}">Liste des caractéristiques</a></div>
-
+    </table>
 {% endblock %}

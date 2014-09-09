@@ -9,7 +9,7 @@ class CaracteristicType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('name', 'text', array(
-                    'label' => "Name",
+                    'label' => "Nom",
                     'label_attr' => array('class' => 'col-sm-2 control-label'),
                 ));
     }

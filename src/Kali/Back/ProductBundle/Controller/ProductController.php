@@ -43,7 +43,7 @@ class ProductController extends Controller {
                     'notice', 'Vos changements ont été sauvegardés!'
             );
 
-            return $this->redirect($this->generateUrl("product_plug", array("id" => $product->getId())));
+            return $this->redirect($this->generateUrl("product_list"));
         }
 
         return array(

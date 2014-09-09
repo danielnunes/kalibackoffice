@@ -1,8 +1,6 @@
-<div class="masthead">
-    <ul class="nav nav-justified">
-        <li><a href="{{path("product_plug", {id : id})}}">Informations générales</a></li>
-        <li><a href="{{path("product_gallery", {id : id})}}">Gallerie</a></li>
-        <li><a href="{{path("product_category", {id : id})}}">Categorie</a></li>
-        <li><a href="{{path("product_caracteristic", {id : id})}}">Caractéristique</a></li>
-    </ul>
+<div class="btn-group-vertical">
+    <button class="btn btn-default" type="button"><a href="{{path("product_plug", {id : id})}}">Informations générales</a></button>
+    <button class="btn btn-default" type="button"><a href="{{path("product_gallery", {id : id})}}">Gallerie</a></button>
+    <button class="btn btn-default" type="button"><a href="{{path("product_category", {id : id})}}">Categorie</a></button>
+    <button class="btn btn-default" type="button"><a href="{{path("product_caracteristic", {id : id})}}">Caractéristique</a></button>
 </div>
