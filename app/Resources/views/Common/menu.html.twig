@@ -1,36 +1,63 @@
-<ul class="nav navbar-nav">
-    <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            Gestion des utilisateurs
-            <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="{{ path("user.list") }}">Liste des utilisateurs</a></li>
-        </ul>
-    </li>
-    <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            Gestion des produits
-            <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="{{ path("product_plug") }}">Créer un produit</a></li>
-            <li><a href="{{ path("product_list") }}">Liste des produits</a></li>
-            <li><a href="{{ path("promotion_plug") }}">Créer un coupon de réduction</a></li>
-            <li><a href="{{ path("promotion_list") }}">Liste des coupon de réduction</a></li>
-        </ul>
-    </li>
-    <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            Gestion des transporteurs
-            <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="{{ path("sender_plug") }}">Créer un transporteur</a></li>
-            <li><a href="{{ path("sender_list") }}">Liste des transporteurs</a></li>
-        </ul>
-    </li>
-    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Gestion des clients</a></li>
-    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Gestion des commandes</a></li>
-    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Gestion des paramètres</a></li>
-</ul>
+<div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Kali BackOffice</a>
+</div>
+
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+        {% if not app.user %}
+            <li class="active"><a href="{{ path("fos_user_security_login") }}">Connexion</a></li>
+        {% else %}
+            <li class="dropdown">
+                <a href="{{ path("user.list") }}" class="dropdown-toggle" data-toggle="dropdown">Gestion des
+                    utilisateurs
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="{{ path("user.list") }}">Liste des utilisateurs</a></li>
+                    <li><a href="{{ path("user.create") }}">Créer un utilisateur</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{#{ path("client.list") }#}">Liste des clients</a></li>
+                    <li><a href="{#{ path("client.create") }#}">Créer un client</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="{{ path("product_list") }}" class="dropdown-toggle" data-toggle="dropdown">Gestion des produits
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="{{ path("product_list") }}">Liste des produits</a></li>
+                    <li><a href="{{ path("product_plug") }}">Créer un produit</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{#{ path("promotion_list") }#}">Liste des commandes</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{{ path("promotion_list") }}">Liste des coupon de réduction</a></li>
+                    <li><a href="{{ path("promotion_plug") }}">Créer un coupon de réduction</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="{{ path("sender_list") }}" class="dropdown-toggle" data-toggle="dropdown">Gestion de
+                    l'expédition
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="{{ path("sender_list") }}">Liste des transporteurs</a></li>
+                    <li><a href="{{ path("sender_plug") }}">Créer un transporteur</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="{#{ path("params.list") }#}">Gestion des paramètres</a>
+            </li>
+        {% endif %}
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <a href="{{ path('fos_user_security_logout') }}">Déconnexion ({{ app.user.username }})</a>
+            {% endif %}
+        </li>
+    </ul>
+</div><!-- /.navbar-collapse -->
