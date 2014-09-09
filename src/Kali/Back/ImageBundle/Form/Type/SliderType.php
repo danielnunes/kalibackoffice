@@ -13,7 +13,8 @@ class SliderType extends AbstractType {
         $builder->add('file', 'file', array(
                     'label' => "Image",
                     'label_attr' => array('class' => 'col-sm-2 control-label'),
-                ));
+                ))
+            ->add('id', 'hidden', array());
     }
 
     public function getName() {
