@@ -1,0 +1,79 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Slider{% endblock %}
+
+{% block body %}
+    <h2>Slider</h2>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <td>
+                    <img src="{{asset(sliders[0].path)}}" width="450" height="170" class="img-responsive"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form_start((form0), { 'attr': {'class': 'form-horizontal'} }) }}
+                    {{ form_errors(form0) }}
+                    <div class="form-group">
+                        {{ form_label(form0.file) }}
+                        <div class="col-sm-10">
+                            {{ form_widget(form0.file) }}
+                        </div>
+                    </div>
+                    <input type="submit" value="Sauvegarder" class="btn btn-success"/>
+                    {{ form_end(form0) }}
+                </td>
+            </tr>
+        </table>
+        <table class="table">
+            <tr>
+                <td>
+                    <img src="{{asset(sliders[1].path)}}" width="450" height="170" class="img-responsive">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form_start((form1), { 'attr': {'class': 'form-horizontal'} }) }}
+                    {{ form_errors(form1) }}
+                    <div class="form-group">
+                        {{ form_label(form1.file) }}
+                        <div class="col-sm-10">
+                            {{ form_widget(form1.file) }}
+                        </div>
+                    </div>
+                    <input type="submit" value="Sauvegarder" class="btn btn-success"/>
+                    {{ form_end(form1) }}
+                </td>
+            </tr>
+        </table>
+        <table class="table">
+            <tr>
+                <td>
+                    <img src="{{asset(sliders[2].path)}}" width="450" height="170" class="img-responsive">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form_start((form2), { 'attr': {'class': 'form-horizontal'} }) }}
+                    {{ form_errors(form2) }}
+                    <div class="form-group">
+                        {{ form_label(form2.file) }}
+                        <div class="col-sm-10">
+                            {{ form_widget(form2.file) }}
+                        </div>
+                    </div>
+                    <input type="submit" value="Sauvegarder" class="btn btn-success"/>
+                    {{ form_end(form2) }}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+{% endblock %}
