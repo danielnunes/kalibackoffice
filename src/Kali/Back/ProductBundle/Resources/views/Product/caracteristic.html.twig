@@ -3,7 +3,7 @@
 {% block title %}Caracteristique de {{product.name}}{% endblock %}
 
 {% block body %}
-    {% include"KaliBackProductBundle:Product:menuProduct.html.twig" with {'id' : product.id} %}
+    {% include "KaliBackProductBundle:Product:navbar.html.twig" with {'active' : 'caract'} %}
     <h2>Caractéristique du produit : {{product.name}}</h2>
 
     {% for flashMessage in app.session.flashbag.get('notice') %}
