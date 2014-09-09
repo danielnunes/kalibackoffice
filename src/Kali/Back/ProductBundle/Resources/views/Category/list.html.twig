@@ -17,18 +17,18 @@
         <tr>
             <th>Nom</th>
             <th>Description</th>
-            <th>Editer</th>
-            <th>Supprimer</th>
+            <th>Actions</th>
         </tr>
         {% for category in categories %}
             <tr>
                 <td>{{category.name}}</td>
                 <td>{{category.description}}</td>
-                <td><a class="btn btn-xs btn-success" href="{{path("category_plug", {id:category.id})}}">éditer</a></td>
-                <td><a class="btn btn-xs btn-danger" href="{{path("category_delete", {id:category.id})}}">supprimer</a></td>
+                <td>
+                    <a class="btn btn-xs btn-success" href="{{path("category_plug", {id:category.id})}}">Editer</a>
+                    <a class="btn btn-xs btn-danger" href="{{path("category_delete", {id:category.id})}}">Supprimer</a>
+                </td>
             </tr>
         {% endfor %}
     </table>
-    <div class="pull-left"><a class="btn btn-primary" href="{{path("product_list")}}">Liste des produits</a></div>
 
 {% endblock %}

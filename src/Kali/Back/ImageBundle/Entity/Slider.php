@@ -4,12 +4,17 @@ namespace Kali\Back\ImageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * Slider
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="SliderRepository")
+ * @ExclusionPolicy("all")
  */
 class Slider {
 

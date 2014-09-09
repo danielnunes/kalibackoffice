@@ -10,7 +10,7 @@ use Kali\Back\ProductBundle\Entity\Caracteristic;
 use Kali\Back\ProductBundle\Form\Type\CaracteristicType;
 
 /**
- * @Route("/category")
+ * @Route("/caracteristic")
  */
 class CaracteristicController extends Controller {
 
@@ -52,7 +52,7 @@ class CaracteristicController extends Controller {
                     'notice', 'Vos changements ont été sauvegardés!'
             );
 
-            return $this->redirect($this->generateUrl("caracteristic_plug", array("id" => $caracteristic->getId())));
+            return $this->redirect($this->generateUrl("caracteristic_list"));
         }
 
         return array(

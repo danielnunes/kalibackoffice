@@ -53,7 +53,7 @@ class CategoryController extends Controller {
                     'notice', 'Vos changements ont été sauvegardés!'
             );
 
-            return $this->redirect($this->generateUrl("category_plug", array("id" => $category->getId())));
+            return $this->redirect($this->generateUrl("category_list"));
         }
 
         return array(

@@ -9,7 +9,7 @@ class SenderType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('name', 'text', array(
-                    'label' => "Name",
+                    'label' => "Nom",
                     'label_attr' => array('class' => 'col-sm-2 control-label'),
                 ))
                 ->add('maxSize', 'integer', array(
@@ -17,7 +17,7 @@ class SenderType extends AbstractType {
                     'label_attr' => array('class' => 'col-sm-2 control-label'),
                 ))
                 ->add('maxWeight', 'integer', array(
-                    'label' => "Poids maximale (g)",
+                    'label' => "Poids maximal (g)",
                     'label_attr' => array('class' => 'col-sm-2 control-label'),
                 ))
                 ->add('price', 'number', array(
