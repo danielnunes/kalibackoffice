@@ -37,12 +37,6 @@ class Picture {
      */
     private $url;
 
-    /**
-     * @var Slider
-     * 
-     * @ORM\OneToOne(targetEntity="Slider", mappedBy="picture")
-     */
-    private $slider;
 
     /**
      * @var Product
@@ -125,16 +119,8 @@ class Picture {
         return $this->url;
     }
 
-    public function getSlider() {
-        return $this->slider;
-    }
-
     public function getProduct() {
         return $this->product;
-    }
-
-    public function setSlider(Slider $slider) {
-        $this->slider = $slider;
     }
 
     public function setProduct(Product $product) {
