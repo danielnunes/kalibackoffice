@@ -9,6 +9,7 @@ use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Expose;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\VirtualProperty;
+use Kali\Back\UserBundle\Entity\Client;
 
 /**
  * @ORM\Entity
@@ -24,6 +25,13 @@ class User extends BaseUser
      * @Expose
      */
     protected $id;
+
+    /**
+     * @var client
+     *
+     * @ORM\OneToOne(targetEntity="Client", mappedBy="user")
+     */
+    private $client;
 
     /**
      * Constructor
@@ -42,6 +50,27 @@ class User extends BaseUser
     {
         return $this->id;
     }
-    
-    
+
+    /**
+     * Set client
+     *
+     * @param Client $client
+     * @return User
+     */
+    public function setClient(Client $client = null)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * Get client
+     *
+     * @return Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
 }
