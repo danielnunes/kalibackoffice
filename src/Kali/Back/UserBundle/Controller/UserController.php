@@ -54,6 +54,16 @@ class UserController extends Controller
                 $user->setUsername($form->get("email")->getData());
                 $user->setPlainPassword($form->get("plainPassword")->getData());
                 $user->setEnabled(true);
+                $newRole = array();
+                foreach ($user->getRoles() as $role){
+                    echo $role;
+                    if(isset($roles[$role])){
+                        $newRole[] = $roles[$role];
+                    } else {
+                        $newRole[] = $role;
+                    }
+                }
+                $user->setRoles($newRole);
 
                 $userManager->updateUser($user);
 
@@ -91,10 +101,21 @@ class UserController extends Controller
                 $user->setUsername($form->get("email")->getData());
                 $user->setPlainPassword($form->get("plainPassword")->getData());
 
+                $newRole = array();
+                foreach ($user->getRoles() as $role){
+                    echo $role;
+                    if(isset($roles[$role])){
+                        $newRole[] = $roles[$role];
+                    } else {
+                        $newRole[] = $role;
+                    }
+                }
+                $user->setRoles($newRole);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
                 $em->flush();
 
+                
                 // On définit un message flash
                 $this->get('session')->getFlashBag()->add('notice', 'Utilisateur modifié avec succès');
 
