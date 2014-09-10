@@ -14,44 +14,26 @@
         {% if not app.user %}
             <li class="active"><a href="{{ path("fos_user_security_login") }}">Connexion</a></li>
         {% else %}
-            <li class="dropdown">
-                <a href="{{ path("user.list") }}" class="dropdown-toggle" data-toggle="dropdown">Gestion des
-                    utilisateurs
-                    <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="{{ path("user.list") }}">Liste des utilisateurs</a></li>
-                    <li><a href="{{ path("user.create") }}">Créer un utilisateur</a></li>
-                    <li class="divider"></li>
-                    <li><a href="{#{ path("client.list") }#}">Liste des clients</a></li>
-                    <li><a href="{#{ path("client.create") }#}">Créer un client</a></li>
-                </ul>
+            <li>
+                <a href="{{ path("user.list") }}">Gestion des utilisateurs</a>
+            </li>
+            <li>
+                <a href="{{ path("user.list") }}">Gestion des clients</a>
             </li>
             <li class="dropdown">
-                <a href="{{ path("product_list") }}" class="dropdown-toggle" data-toggle="dropdown">Gestion des produits
-                    <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gestion du catalogue<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="{{ path("product_list") }}">Liste des produits</a></li>
-                    <li><a href="{{ path("product_plug") }}">Créer un produit</a></li>
+                    <li><a href="{{ path("product_list") }}">Produits</a></li>
                     <li class="divider"></li>
-                    <li><a href="{{ path("category_list") }}">Liste des catégories</a></li>
-                    <li><a href="{{ path("category_plug") }}">Créer une catégorie</a></li>
+                    <li><a href="{{ path("category_list") }}">Catégories</a></li>
                     <li class="divider"></li>
-                    <li><a href="{{ path("caracteristic_list") }}">Liste des caractéristiques</a></li>
-                    <li><a href="{{ path("caracteristic_plug") }}">Créer une caractéristique</a></li>
+                    <li><a href="{{ path("caracteristic_list") }}">Caractéristiques</a></li>
                     <li class="divider"></li>
-                    <li><a href="{#{ path("promotion_list") }#}">Liste des commandes</a></li>
+                    <li><a href="{#{ path("command_list") }#}">Commandes</a></li>
                     <li class="divider"></li>
-                    <li><a href="{{ path("promotion_list") }}">Liste des coupon de réduction</a></li>
-                    <li><a href="{{ path("promotion_plug") }}">Créer un coupon de réduction</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="{{ path("sender_list") }}" class="dropdown-toggle" data-toggle="dropdown">Gestion de
-                    l'expédition
-                    <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="{{ path("sender_list") }}">Liste des transporteurs</a></li>
-                    <li><a href="{{ path("sender_plug") }}">Créer un transporteur</a></li>
+                    <li><a href="{{ path("promotion_list") }}">Coupons de réduction</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{{ path("sender_list") }}">Transporteurs</a></li>
                 </ul>
             </li>
             <li class="dropdown">
