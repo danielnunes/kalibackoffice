@@ -43,8 +43,7 @@ class ClientFormType extends AbstractType
                     'constraints' => new NotBlank(),
                     'label' => 'Adresse',)
                 )
-                ->add('city', 'text', array('label' => 'Ville',
-                    'empty_value' => '',))
+                ->add('city', 'text', array('label' => 'Ville',))
                 ->add('postalCode', 'text', array('label' => 'Coede postale',))
                 ->add('phone', 'text', array('label' => 'numéro de téléphone',))
                 ->add('mobilePhone', 'text', array('label' => 'numéro de mobile',));
