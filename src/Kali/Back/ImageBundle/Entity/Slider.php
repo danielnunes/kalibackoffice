@@ -137,4 +137,7 @@ class Slider {
     public function setFile($file) {
         $this->file = $file;
     }
+    public function setId($id) {
+        $this->id = $id;
+    }
 }

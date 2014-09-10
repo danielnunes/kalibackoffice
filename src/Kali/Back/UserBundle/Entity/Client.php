@@ -3,14 +3,14 @@
 namespace Kali\Back\UserBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Kali\Back\ProductBundle\Entity\Command;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_client")
  */
-class Client extends BaseUser
+class Client
 {
     /**
      * @ORM\Id
@@ -20,42 +20,49 @@ class Client extends BaseUser
     protected $id;
 
     /**
+     *
+     * @ORM\OneToOne(targetEntity="User", inversedBy="client")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="gender", type="boolean", length=255)
+     * @ORM\Column(name="gender", type="boolean", nullable = true)
      */
     private $gender;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="firstName", type="string", length=255)
+     * @ORM\Column(name="firstName", type="string", length=255, nullable = true)
      */
     private $firstName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lastName", type="string", length=255)
+     * @ORM\Column(name="lastName", type="string", length=255, nullable = true)
      */
     private $lastName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="string", length=255)
+     * @ORM\Column(name="address", type="string", length=255, nullable = true)
      */
     private $address;
 
     /**
      *
-     * @ORM\Column(name="birthDate", type="date", nullable=true)
+     * @ORM\Column(name="birthDate", type="date", nullable=true, nullable = true)
      */
     private $birthDate;
 
     /**
      *
-     * @ORM\Column(name="createDate", type="datetime", nullable=true)
+     * @ORM\Column(name="createDate", type="datetime", nullable=true, nullable = true)
      */
     private $createDate;
 
@@ -68,28 +75,28 @@ class Client extends BaseUser
     /**
      * @var integer
      *
-     * @ORM\Column(name="postalCode", type="integer")
+     * @ORM\Column(name="postalCode", type="integer", nullable = true)
      */
     private $postalCode;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="city", type="string", length=255)
+     * @ORM\Column(name="city", type="string", length=255, nullable = true)
      */
     private $city;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="phone", type="string")
+     * @ORM\Column(name="phone", type="string", nullable = true)
      */
     private $phone;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="mobilePhone", type="string")
+     * @ORM\Column(name="mobilePhone", type="string", nullable = true)
      */
     private $mobilePhone;
 
@@ -107,7 +114,6 @@ class Client extends BaseUser
     public function __construct()
     {
         $this->commands = new ArrayCollection();
-        parent::__construct();
     }
 
     /**
@@ -376,10 +382,10 @@ class Client extends BaseUser
     /**
      * Add commands
      *
-     * @param \Kali\Back\ProductBundle\Entity\Command $commands
+     * @param Command $commands
      * @return User
      */
-    public function addCommand(\Kali\Back\ProductBundle\Entity\Command $commands)
+    public function addCommand(Command $commands)
     {
         $this->commands[] = $commands;
 
@@ -389,9 +395,9 @@ class Client extends BaseUser
     /**
      * Remove commands
      *
-     * @param \Kali\Back\ProductBundle\Entity\Command $commands
+     * @param Command $commands
      */
-    public function removeCommand(\Kali\Back\ProductBundle\Entity\Command $commands)
+    public function removeCommand(Command $commands)
     {
         $this->commands->removeElement($commands);
     }
@@ -404,5 +410,28 @@ class Client extends BaseUser
     public function getCommands()
     {
         return $this->commands;
+    }
+
+    /**
+     * Set user
+     *
+     * @param user $user
+     * @return Client
+     */
+    public function setUser(user $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return user
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

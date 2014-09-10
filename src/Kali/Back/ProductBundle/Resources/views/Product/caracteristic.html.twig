@@ -3,7 +3,7 @@
 {% block title %}Caracteristique de {{product.name}}{% endblock %}
 
 {% block body %}
-    {% include"KaliBackProductBundle:Product:menuProduct.html.twig" with {'id' : product.id} %}
+    {% include "KaliBackProductBundle:Product:navbar.html.twig" with {'active' : 'caract'} %}
     <h2>Caractéristique du produit : {{product.name}}</h2>
 
     {% for flashMessage in app.session.flashbag.get('notice') %}
@@ -22,6 +22,7 @@
     </div>
 
     <input type="submit" value="Sauvegarder" class="btn btn-success"/>
+    <a href="#" class="btn btn-info" onclick="history.go(-1)">Retour</a>
     {{ form_end(form) }}
 
 {% endblock %}

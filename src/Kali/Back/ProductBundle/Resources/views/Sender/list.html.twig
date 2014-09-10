@@ -18,9 +18,8 @@
             <th>Nom</th>
             <th>Taille maximale (cm)</th>
             <th>Poids maximal (g)</th>
-            <th>Price (€)</th>
-            <th>Editer</th>
-            <th>Supprimer</th>
+            <th>Prix (€)</th>
+            <th>Actions</th>
         </tr>
         {% for sender in senders %}
             <tr>
@@ -28,8 +27,10 @@
                 <td>{{sender.maxSize}}</td>
                 <td>{{sender.maxWeight}}</td>
                 <td>{{sender.price}}</td>
-                <td><a class="btn btn-xs btn-success" href="{{path("sender_plug", {id:sender.id})}}">éditer</a></td>
-                <td><a class="btn btn-xs btn-danger" href="{{path("sender_delete", {id:sender.id})}}">supprimer</a></td>
+                <td>
+                    <a class="btn btn-xs btn-success" href="{{path("sender_plug", {id:sender.id})}}">Editer</a>
+                    <a class="btn btn-xs btn-danger" href="{{path("sender_delete", {id:sender.id})}}">Supprimer</a>
+                </td>
             </tr>
         {% endfor %}
     </table>

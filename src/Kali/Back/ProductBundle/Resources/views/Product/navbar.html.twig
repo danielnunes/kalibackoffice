@@ -1,0 +1,9 @@
+<ul class="nav nav-tabs" role="tablist">
+    <li {% if active == 'list' %}class="active"{% endif %}><a href="{{ path("product_list") }}">Liste des produits</a></li>
+    {% if(product.name is defined) and product.name != "" %}
+        <li {% if active == 'info' %}class="active"{% endif %}><a href="{{ path("product_plug", {id : id}) }}">Informations produit</a></li>
+        <li {% if active == 'gallery' %}class="active"{% endif %}><a href="{{ path("product_gallery", {id : id}) }}">Gallerie produit</a></li>
+        <li {% if active == 'cat' %}class="active"{% endif %}><a href="{{ path("product_category", {id : id}) }}">Catégories</a></li>
+        <li {% if active == 'caract' %}class="active"{% endif %}><a href="{{ path("product_caracteristic", {id : id}) }}">Caractéristiques</a></li>
+    {% endif %}
+</ul>
