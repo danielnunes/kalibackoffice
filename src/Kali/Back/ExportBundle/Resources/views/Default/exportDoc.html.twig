@@ -1,0 +1,42 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Modification d'un client{% endblock %}
+
+{% block body %}
+
+<form class = "form-landing-diag" method ="POST" action="{{path('show_xml')}}">
+    <p> Exporter les produits<button value ="Tout exporter" name = "export_all_product">Tout exporter</button></p>
+    <div class="col-xs-6 diag-form">
+    <label class='col-xs-6 control-labell diag-form' >A partir de : </label>
+        <input type="date" name="date_debut_produit"/>
+    <label class='col-xs-6 control-labell diag-form' >Jusqu'à : </label>
+        <input type="date" name="date_fin_produit"/>
+    </div> 
+    <p><input type ="submit" name = "submit_product" value ="exporter" /></p>
+</form>
+
+
+<form class = "form-landing-diag" method ="POST" action="{{path('show_xml')}}"> 
+    <p> Exporter les commandes<button value ="Tout exporter" name = "export_all_command">Tout exporter</button></p>
+    <div class="col-xs-6 diag-form">
+    <label class='col-xs-6 control-labell diag-form' >A partir de : </label>
+        <input type="date" name="date_debut_command"/>
+    <label class='col-xs-6 control-labell diag-form' >Jusqu'à : </label>
+        <input type="date" name="date_fin_command"/>
+    </div> 
+    <input type ="submit" name = "submit_command" value ="exporter" />
+</form>
+
+<form class = "form-landing-diag" method ="POST" action="{{path('show_xml')}}"> 
+    <p> Exporter les clients<button value ="Tout exporter" name = "export_all_client">Tout exporter</button></p>
+    <div class="col-xs-6 diag-form">
+        
+        <label class='col-xs-6 control-labell diag-form' >A partir de : </label>
+        <input type="date" name="date_client"/>
+        <label class='col-xs-6 control-labell diag-form' >Jusqu'à : </label>
+        <input type="date" name="date_fin_client"/>
+    </div> 
+    <input type ="submit" name = "submit_client" value ="exporter" />
+</form>
+{% endblock%}
+
