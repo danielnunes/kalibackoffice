@@ -5,12 +5,17 @@ namespace Kali\Back\ImageBundle\Entity;
 use Kali\Back\ProductBundle\Entity\Product;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * Picture
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Kali\Back\ImageBundle\Entity\PictureRepository")
+ * @ExclusionPolicy("all")
  */
 class Picture {
 
@@ -20,6 +25,7 @@ class Picture {
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
      */
     private $id;
 
@@ -27,6 +33,7 @@ class Picture {
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Expose
      */
     private $name;
 
@@ -48,6 +55,7 @@ class Picture {
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Expose
      */
     private $path;
 
@@ -61,6 +69,7 @@ class Picture {
      * @var Boolean
      *
      * @ORM\Column(name="one", type="boolean")
+     * @Expose
      */
     private $one;
     

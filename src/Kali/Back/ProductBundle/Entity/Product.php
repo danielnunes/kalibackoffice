@@ -4,6 +4,10 @@ namespace Kali\Back\ProductBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * Product
@@ -28,6 +32,7 @@ class Product
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Expose
      */
     private $name;
 
@@ -35,6 +40,7 @@ class Product
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255)
+     * @Expose
      */
     private $description;
 
@@ -42,6 +48,7 @@ class Product
      * @var float
      *
      * @ORM\Column(name="price", type="float")
+     * @Expose
      */
     private $price;
 
@@ -49,6 +56,7 @@ class Product
      * @var integer
      *
      * @ORM\Column(name="lenght", type="integer")
+     * @Expose
      */
     private $lenght;
     
@@ -56,6 +64,7 @@ class Product
      * @var integer
      *
      * @ORM\Column(name="density", type="integer")
+     * @Expose
      */
     private $density;
     
@@ -63,6 +72,7 @@ class Product
      * @var integer
      *
      * @ORM\Column(name="width", type="integer")
+     * @Expose
      */
     private $width;
    
@@ -71,6 +81,7 @@ class Product
      * @var integer
      *
      * @ORM\Column(name="weight", type="integer")
+     * @Expose
      */
     private $weight;
 
@@ -78,6 +89,7 @@ class Product
      * @var integer
      *
      * @ORM\Column(name="stock", type="integer")
+     * @Expose
      */
     private $stock;
     
@@ -101,6 +113,7 @@ class Product
      * @var array
      * 
      * @ORM\OneToMany(targetEntity="Kali\Back\ImageBundle\Entity\Picture", mappedBy="product")
+     * @Expose
      */
     private $pictures;
     
@@ -115,6 +128,7 @@ class Product
      * @var boolean
      * 
      * @ORM\Column(name="ecoParticipation", type="boolean", nullable=true)
+     * @Expose
      */
     private $ecoParticipation;
     
