@@ -1,7 +1,33 @@
-{% extends "::base.html.twig" %}
+{% extends "::layout.html.twig" %}
 
 {% block title %}KaliBackCommandBundle:Command:list{% endblock %}
 
 {% block body %}
 <h1>Welcome to the Command:list page</h1>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice bg-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <table class="table">
+        <tr>
+            <th>Date</th>
+            <th>Expéditeur</th>
+            <th>Prix</th>
+            
+        </tr>
+        {% for command in commands %}
+            <tr>
+                <td>{{ command.date|date("y-m-d") }}</td>
+                <td>{{ command.sender.name }}</td>
+                <td>{{ command.price }}</td>
+                
+                <td>
+                    <a class="btn btn-xs btn-info" href="{{ path("command_plug", {id:command.id}) }}">Modifier</a>
+                    <a class="btn btn-xs btn-danger" href="{{ path("command_delete", {id:command.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

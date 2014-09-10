@@ -1,7 +1,13 @@
-{% extends "::base.html.twig" %}
+{% extends "::layout.html.twig" %}
 
 {% block title %}KaliBackCommandBundle:Command:plug{% endblock %}
 
 {% block body %}
 <h1>Welcome to the Command:plug page</h1>
+<form action="{{ path('command_plug', {id:command.id}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+    {{ form_widget(form) }}
+<div>
+        <input type="submit" value="Modifier" />
+    </div>
+</form>
 {% endblock %}
