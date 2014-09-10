@@ -7,3 +7,8 @@ product :
   type: rest
   resource:     "KaliRestRestBundle:Product"
   name_prefix:  api_
+  
+category :
+  type: rest
+  resource:     "KaliRestRestBundle:Category"
+  name_prefix:  api_

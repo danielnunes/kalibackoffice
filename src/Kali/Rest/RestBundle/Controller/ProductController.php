@@ -33,5 +33,30 @@ class ProductController extends Controller {
 
         return $products;
     }
+    
+    /**
+     * Service Rest retournant tous les produits.
+     * @return array
+     */
+    public function getCategoryProductsAction($category) {
+        $products = $this->getDoctrine()->getManager()
+                ->getRepository("KaliBackProductBundle:Product")
+                ->findByCategory(urldecode($category));
+
+        return $products;
+    }
+    
+        
+    /**
+     * Service Rest retournant tous les produits.
+     * @return array
+     */
+    public function getProductAction($id) {
+        $products = $this->getDoctrine()->getManager()
+                ->getRepository("KaliBackProductBundle:Product")
+                ->find($id);
+
+        return $products;
+    }
 
 }
