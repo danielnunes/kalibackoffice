@@ -16,17 +16,19 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @Route("/product")
  */
-class ProductController extends Controller {
+class ProductController extends Controller
+{
 
     /**
      * @Route("/plug/{id}", name="product_plug", defaults={"id" = "0"})
      * @Template()
      */
-    public function plugAction($id, Request $request) {
+    public function plugAction($id, Request $request)
+    {
         if ($id != 0) {
             $product = $this->getDoctrine()
-                    ->getRepository("KaliBackProductBundle:Product")
-                    ->find($id);
+                ->getRepository("KaliBackProductBundle:Product")
+                ->find($id);
         } else {
             $product = new Product();
         }
@@ -40,7 +42,7 @@ class ProductController extends Controller {
             $em->flush();
 
             $this->get('session')->getFlashBag()->add(
-                    'notice', 'Vos changements ont été sauvegardés!'
+                'notice', 'Vos changements ont été sauvegardés!'
             );
 
             return $this->redirect($this->generateUrl("product_list"));
@@ -56,14 +58,15 @@ class ProductController extends Controller {
      * @Route("/gallery/{id}", name="product_gallery")
      * @Template()
      */
-    public function pictureAction($id, Request $request) {
+    public function pictureAction($id, Request $request)
+    {
         $product = $this->getDoctrine()
-                ->getRepository("KaliBackProductBundle:Product")
-                ->find($id);
+            ->getRepository("KaliBackProductBundle:Product")
+            ->find($id);
 
         $pictures = $this->getDoctrine()
-                ->getRepository("KaliBackImageBundle:Picture")
-                ->galleryProduct($product);
+            ->getRepository("KaliBackImageBundle:Picture")
+            ->galleryProduct($product);
 
         $picture = new Picture();
 
@@ -93,10 +96,11 @@ class ProductController extends Controller {
      * @Route("/category/{id}", name="product_category")
      * @Template()
      */
-    public function categoryAction($id, Request $request) {
+    public function categoryAction($id, Request $request)
+    {
         $product = $this->getDoctrine()
-                ->getRepository("KaliBackProductBundle:Product")
-                ->find($id);
+            ->getRepository("KaliBackProductBundle:Product")
+            ->find($id);
 
         $form = $this->createForm(new CategoryProductType(), $product);
 
@@ -107,7 +111,7 @@ class ProductController extends Controller {
             $em->persist($product);
             $em->flush();
             $this->get('session')->getFlashBag()->add(
-                    'notice', 'Vos changements ont été sauvegardés!'
+                'notice', 'Vos changements ont été sauvegardés!'
             );
             return $this->redirect($this->generateUrl("product_category", array("id" => $product->getId())));
         }
@@ -123,10 +127,11 @@ class ProductController extends Controller {
      * @Route("/caracteristic/{id}", name="product_caracteristic")
      * @Template()
      */
-    public function caracteristicAction($id, Request $request) {
+    public function caracteristicAction($id, Request $request)
+    {
         $product = $this->getDoctrine()
-                ->getRepository("KaliBackProductBundle:Product")
-                ->find($id);
+            ->getRepository("KaliBackProductBundle:Product")
+            ->find($id);
 
         $form = $this->createForm(new CaracteristicProductType(), $product);
 
@@ -137,7 +142,7 @@ class ProductController extends Controller {
             $em->persist($product);
             $em->flush();
             $this->get('session')->getFlashBag()->add(
-                    'notice', 'Vos changements ont été sauvegardés!'
+                'notice', 'Vos changements ont été sauvegardés!'
             );
             return $this->redirect($this->generateUrl("product_caracteristic", array("id" => $product->getId())));
         }
@@ -153,13 +158,14 @@ class ProductController extends Controller {
      * @Route("/list", name="product_list")
      * @Template()
      */
-    public function listAction() {
+    public function listAction()
+    {
         $products = $this->getDoctrine()
-                ->getRepository("KaliBackProductBundle:Product")
-                ->findAll();
-        
+            ->getRepository("KaliBackProductBundle:Product")
+            ->findAll();
+
         return array(
-            "products" =>$products
+            "products" => $products
         );
     }
 
@@ -167,15 +173,42 @@ class ProductController extends Controller {
      * @Route("/delete/{id}", name="product_delete")
      * @Template()
      */
-    public function deleteAction($id) {
+    public function deleteAction($id)
+    {
         $product = $this->getDoctrine()
-                ->getRepository("KaliBackProductBundle:Product")
-                ->find($id);
-        
+            ->getRepository("KaliBackProductBundle:Product")
+            ->find($id);
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($product);
         $em->flush();
         return $this->redirect($this->generateUrl("product_list", array()));
     }
 
+//    /**
+//     * @Route("/prodGen", name="prod_gen")
+//     * @Template()
+//     */
+//    public function productGenerationAction()
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//
+//        for ($i = 0; $i < 15; $i++) {
+//            $product = new Product();
+//            $product->setName("ProdGen $i");
+//            $product->setDescription("Description ProdGen $i");
+//            $product->setPrice(2*$i+1);
+//            $product->setLenght(2*$i+1);
+//            $product->setWeight(2*$i+1);
+//            $product->setDensity(2*$i+1);
+//            $product->setWidth(2*$i+1);
+//            $product->setStock(2*$i+1);
+//            $product->setEcoParticipation(true);
+//
+//            $em->persist($product);
+//            $em->flush();
+//        }
+//
+//        return array();
+//    }
 }

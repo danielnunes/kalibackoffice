@@ -14,8 +14,6 @@ class SliderController extends Controller
             ->getRepository("KaliBackImageBundle:Slider")
             ->findAll();
 
-        die(var_dump($sliders));
-
         return $sliders;
     }
 }

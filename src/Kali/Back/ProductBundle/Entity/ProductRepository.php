@@ -12,4 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProductRepository extends EntityRepository
 {
+    /**
+     * 
+     * @description Retourne la liste des 10 produits les plus vendus
+     * @return array(Product)
+     */
+    public function findPopular()
+    {
+        return "toto";
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM KaliBackProductBndle:Product p'
+            )
+            ->getResult();
+    }
 }
