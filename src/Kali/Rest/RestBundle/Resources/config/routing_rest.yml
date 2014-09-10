@@ -2,3 +2,8 @@ slider :
   type: rest
   resource:     "KaliRestRestBundle:Slider"
   name_prefix:  api_
+
+product :
+  type: rest
+  resource:     "KaliRestRestBundle:Product"
+  name_prefix:  api_
