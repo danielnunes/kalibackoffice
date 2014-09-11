@@ -22,7 +22,7 @@ class ParameterController extends Controller
                             ->findAll();
 
 
-        $file = '/../../../../web/'.'img/logo.png';
+        $file = 'http://back.kali.dev/img/logo.png';
 
         return array(
             "parameters" => $parameters,
