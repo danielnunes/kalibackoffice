@@ -23,6 +23,11 @@ kali_back_image:
     type:     annotation
     prefix:   /
 
+kali_back_parameter:
+    resource: "@KaliBackParameterBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 kali_back_product:
     resource: "@KaliBackProductBundle/Controller/"
     type:     annotation
