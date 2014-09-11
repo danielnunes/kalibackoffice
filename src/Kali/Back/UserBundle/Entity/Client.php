@@ -5,10 +5,16 @@ namespace Kali\Back\UserBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Kali\Back\ProductBundle\Entity\Command;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
+use Kali\Back\UserBundle\Entity\Client;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_client")
+ * @ExclusionPolicy("all")
  */
 class Client
 {
@@ -16,6 +22,7 @@ class Client
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
      */
     protected $id;
 
@@ -23,6 +30,7 @@ class Client
      *
      * @ORM\OneToOne(targetEntity="User", inversedBy="client")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @Expose
      */
     private $user;
 
@@ -30,6 +38,7 @@ class Client
      * @var string
      *
      * @ORM\Column(name="gender", type="boolean", nullable = true)
+     * @Expose
      */
     private $gender;
 
@@ -37,6 +46,7 @@ class Client
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255, nullable = true)
+     * @Expose
      */
     private $firstName;
 
@@ -44,6 +54,7 @@ class Client
      * @var string
      *
      * @ORM\Column(name="lastName", type="string", length=255, nullable = true)
+     * @Expose
      */
     private $lastName;
 
@@ -51,12 +62,14 @@ class Client
      * @var string
      *
      * @ORM\Column(name="address", type="string", length=255, nullable = true)
+     * @Expose
      */
     private $address;
 
     /**
      *
      * @ORM\Column(name="birthDate", type="date", nullable=true, nullable = true)
+     * @Expose
      */
     private $birthDate;
 
@@ -76,6 +89,7 @@ class Client
      * @var integer
      *
      * @ORM\Column(name="postalCode", type="integer", nullable = true)
+     * @Expose
      */
     private $postalCode;
 
@@ -83,6 +97,7 @@ class Client
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=255, nullable = true)
+     * @Expose
      */
     private $city;
 
@@ -90,6 +105,7 @@ class Client
      * @var integer
      *
      * @ORM\Column(name="phone", type="string", nullable = true)
+     * @Expose
      */
     private $phone;
 
@@ -97,6 +113,7 @@ class Client
      * @var integer
      *
      * @ORM\Column(name="mobilePhone", type="string", nullable = true)
+     * @Expose
      */
     private $mobilePhone;
 

@@ -37,7 +37,7 @@ class Category
     private $description;
     
     /**
-     * @var array
+     * @var ArrayCollection
      * 
      * @ORM\ManyToMany(targetEntity="Product", mappedBy="categories")
      */

@@ -31,12 +31,9 @@ class ProductRepository extends EntityRepository {
      * @description Retourne la liste des  produits par catégorie
      * @return array(Product)
      */
-    public function findByCategory($name) {
-        return $this->getEntityManager()
-                        ->createQuery(
-                                'SELECT p FROM KaliBackProductBundle:Product p LEFT JOIN p.categories c WHERE c.name=:name'
-                        )
-                        ->setParameter('name', $name)
+    public function findByCat(Category $category) {
+        return $this->_em->createQuery('SELECT p FROM KaliBackProductBundle:Product p JOIN p.categories c WHERE c=:category')
+                        ->setParameter('category', $category)
                         ->getResult();
     }
 }
