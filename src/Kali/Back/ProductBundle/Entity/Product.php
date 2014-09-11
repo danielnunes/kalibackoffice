@@ -98,6 +98,7 @@ class Product
      * 
      * @ORM\ManyToMany(targetEntity="Caracteristic", inversedBy="products")
      * @ORM\JoinTable(name="caracteristic_products")
+     * @Expose
      */
     private $caracteristics;
     

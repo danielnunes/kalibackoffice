@@ -4,12 +4,17 @@ namespace Kali\Back\ProductBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * Caracteristic
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="CaracteristicRepository")
+ * @ExclusionPolicy("all")
  */
 class Caracteristic
 {
@@ -19,6 +24,7 @@ class Caracteristic
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
      */
     private $id;
 
@@ -26,6 +32,7 @@ class Caracteristic
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Expose
      */
     private $name;
     

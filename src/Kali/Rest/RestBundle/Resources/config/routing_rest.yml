@@ -16,4 +16,9 @@ category :
 user :
   type: rest
   resource:     "KaliRestRestBundle:User"
+  name_prefix:  api_  
+  
+caracteristic :
+  type: rest
+  resource:     "KaliRestRestBundle:Caracteristic"
   name_prefix:  api_

@@ -2,10 +2,11 @@
 
 namespace Kali\Rest\RestBundle\Controller;
 
+use DateTime;
 use FOS\UserBundle\Doctrine\UserManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
+use Kali\Back\UserBundle\Entity\Client;
 
 class UserController extends Controller {
 
@@ -19,21 +20,21 @@ class UserController extends Controller {
         return $user;
     }
 
-    public function getCreateUserAction($gender, $firstName, $lastName, $address, $birthDate, $postalCode, $city, $phone, $mobilePhone, $email, $password) {
+    public function getCreateUserAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
         $userManager = $this->get('fos_user.user_manager');
 
         $user = $userManager->createUser();
         $client = new Client();
 
-        $user->setUsername($email);
-        $user->setPlainPassword($password);
-        $user->setPlainPassword($email);
+        $user->setUsername($request->get("email"));
+        $user->setPlainPassword($request->get("password"));
+        $user->setEmail($request->get("email"));
         $user->setEnabled(true);
 
         $userManager->updateUser($user);
 
-        $gender = $form->get('client')->get("gender")->getData();
+        $gender = $request->get("gender");
         switch ($gender) {
             case 'm' :
                 $client->setGender(false);
@@ -42,16 +43,16 @@ class UserController extends Controller {
                 $client->setGender(true);
                 break;
         }
-        $client->setFirstName($firstName);
-        $client->setAddress($address);
-        $client->setLastName($lastName);
-        $client->setPostalCode($postalCode);
-        $client->setCity($city);
-        $client->setMobilePhone($mobilePhone);
-        $client->setPhone($phone);
-        $date = new \DateTime('NOW');
-        $client->setCreateDate($date);
-        $client->setBirthDate($birthDate);
+        $client->setFirstName($request->get("firstName"));
+        $client->setAddress($request->get("address"));
+        $client->setLastName($request->get("lastName"));
+        $client->setPostalCode($request->get("postalCode"));
+        $client->setCity($request->get("city"));
+        $client->setMobilePhone($request->get("mobilePhone"));
+        $client->setPhone($request->get("phone"));
+        $date = new DateTime('NOW');
+        $client->setCreateDate($request->get("date"));
+        $client->setBirthDate($request->get("birthDate"));
         $client->setLastUpdateDate($date);
         $client->setUser($user);
 
@@ -73,7 +74,7 @@ class UserController extends Controller {
 
         $user->setUsername($email);
         $user->setPlainPassword($password);
-        $user->setPlainPassword($email);
+        $user->setEmail($email);
         $user->setEnabled(true);
 
         $userManager->updateUser($user);
@@ -94,7 +95,7 @@ class UserController extends Controller {
         $client->setCity($city);
         $client->setMobilePhone($mobilePhone);
         $client->setPhone($phone);
-        $date = new \DateTime('NOW');
+        $date = new DateTime('NOW');
         $client->setCreateDate($date);
         $client->setBirthDate($birthDate);
         $client->setLastUpdateDate($date);

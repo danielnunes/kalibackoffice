@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class CaracteristicRepository extends EntityRepository
 {
+    /**
+     * 
+     * @description Retourne la liste des caractéristiques d'un produit
+     * @param Product $product
+     * @return array(Caracteristic)
+     */
+    public function findByProduct(Product $product) {
+        return $this->_em->createQuery('SELECT c FROM KaliBackProductBundle:Caracteristic c WHERE c.products=:product')
+                        ->setParameter('product', $product)
+                        ->getResult();
+    }
 }
