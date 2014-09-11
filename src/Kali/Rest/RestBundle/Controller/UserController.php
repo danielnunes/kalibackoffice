@@ -1,6 +1,6 @@
 <?php
 
-namespace Kali\Rest\UserBundle\Controller;
+namespace Kali\Rest\RestBundle\Controller;
 
 use FOS\UserBundle\Doctrine\UserManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

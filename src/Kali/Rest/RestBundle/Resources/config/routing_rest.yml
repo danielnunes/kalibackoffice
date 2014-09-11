@@ -12,3 +12,8 @@ category :
   type: rest
   resource:     "KaliRestRestBundle:Category"
   name_prefix:  api_
+    
+user :
+  type: rest
+  resource:     "KaliRestRestBundle:User"
+  name_prefix:  api_
