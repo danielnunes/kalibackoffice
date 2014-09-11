@@ -25,7 +25,6 @@ class AppKernel extends Kernel
             new Kali\Rest\DefaultBundle\KaliRestDefaultBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
-            new Kali\Rest\UserBundle\KaliRestUserBundle(),
             new Kali\Back\ThemeBundle\KaliBackThemeBundle(),
             new Kali\Rest\RestBundle\KaliRestRestBundle(),
             new Kali\Back\ExportBundle\KaliBackExportBundle(),

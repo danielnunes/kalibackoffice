@@ -1,4 +1,0 @@
-users :
-  type: rest
-  resource:     "KaliRestUserBundle:User"
-  name_prefix:  api_

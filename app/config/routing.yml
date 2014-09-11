@@ -3,11 +3,6 @@ kali_rest_rest:
     type:     annotation
     prefix:   /
 
-kali_rest_user:
-    resource: "@KaliRestUserBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 kali_rest_default:
     resource: "@KaliRestDefaultBundle/Controller/"
     type:     annotation
