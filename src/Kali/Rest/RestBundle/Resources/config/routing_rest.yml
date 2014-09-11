@@ -21,4 +21,9 @@ user :
 caracteristic :
   type: rest
   resource:     "KaliRestRestBundle:Caracteristic"
+  name_prefix:  api__  
+  
+sender :
+  type: rest
+  resource:     "KaliRestRestBundle:Sender"
   name_prefix:  api_

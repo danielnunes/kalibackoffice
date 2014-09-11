@@ -3,13 +3,18 @@
 namespace Kali\Back\ProductBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping as ORM;;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * Sender
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="SenderRepository")
+ * @ExclusionPolicy("all")
  */
 class Sender
 {
@@ -19,6 +24,7 @@ class Sender
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
      */
     private $id;
 
@@ -26,6 +32,7 @@ class Sender
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Expose
      */
     private $name;
 
@@ -54,6 +61,7 @@ class Sender
      * @var float
      *
      * @ORM\Column(name="price", type="float")
+     * @Expose
      */
     private $price;
     

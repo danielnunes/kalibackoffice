@@ -53,17 +53,17 @@ class Product
     private $price;
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="lenght", type="integer")
+     * @ORM\Column(name="lenght", type="float")
      * @Expose
      */
     private $lenght;
     
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="density", type="integer")
+     * @ORM\Column(name="density", type="float")
      * @Expose
      */
     private $density;
@@ -78,9 +78,9 @@ class Product
    
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="weight", type="integer")
+     * @ORM\Column(name="weight", type="float")
      * @Expose
      */
     private $weight;
@@ -200,7 +200,7 @@ class Product
     /**
      * Set weight
      *
-     * @param integer $weight
+     * @param float $weight
      * @return Product
      */
     public function setWeight($weight)
@@ -213,7 +213,7 @@ class Product
     /**
      * Get weight
      *
-     * @return integer 
+     * @return float 
      */
     public function getWeight()
     {
