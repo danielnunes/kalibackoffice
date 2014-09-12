@@ -7,6 +7,9 @@ use FOS\UserBundle\Doctrine\UserManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Kali\Back\UserBundle\Entity\Client;
+use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken as Token;
+
 
 class UserController extends Controller {
 
@@ -14,6 +17,48 @@ class UserController extends Controller {
         $client = $this->getDoctrine()->getRepository("KaliBackUserBundle:Client")->find($id);
         return $client;
     }
+    
+    
+    public function getloginAction(Request $request) {
+        
+            if ("POST" === $request->getMethod()) {
+                $em = $this->getDoctrine()->getManager();
+                $pass = $request->get("_password");
+                $user = $em->getRepository("KaliBackUserBundleBundle:User")
+                        ->findOneBy(array("email" => $request->get('_username')));
+
+                /* if user exists */
+                if ($user) {
+
+                    $salt = $user->getSalt();
+                    $passData = $user->getPassword();
+                    $iterations = 5000;
+                    $result = '';
+                    $salted = $pass . '{' . $salt . '}';
+
+                    $digest = hash('sha512', $salted, true);
+
+                    /* encrypts the password in sha512 */
+                    for ($i = 1; $i < $iterations; $i++) {
+                        $digest = hash('sha512', $digest . $salted, true);
+                    }
+                    $cryptedPass = base64_encode($digest);
+                    /* if the passwords match */
+                    if ($cryptedPass == $passData) {
+                        $token = new Token($user, $user->getPassword(), 'fos_userbundle', $user->getRoles());
+                        $client = $em->getRepository("KaliBackUserBundle:Client")->findBy(array("user" => $user));
+                        /* return client and token */
+                        return $this->redirect("http://front.kali.dev/check_login/" . $client->getId()."/".$token);  
+                    }
+                    else {
+                        return $this->redirect("http://front.kali.dev/connexion/0");
+                    }
+                }
+            }
+
+            return $this->redirect("http://front.kali.dev/connexion/0");
+    }
+    
 
     public function getCreateUserAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
