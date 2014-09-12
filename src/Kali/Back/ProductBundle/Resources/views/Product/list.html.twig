@@ -22,6 +22,7 @@
             <th>Épaisseur (cm)</th>
             <th>Poids (kg)</th>
             <th>Eco participation</th>
+            <th>Stock</th>
             <th>Actions</th>
         </tr>
         {% for product in products %}
@@ -39,6 +40,7 @@
                         non
                     {% endif %}
                 </td>
+                <td>{{ product.stock }}</td>
                 <td>
                     <a class="btn btn-xs btn-info" href="{{ path("product_gallery", {id:product.id}) }}">Ajouter des images</a>
                     <a class="btn btn-xs btn-success" href="{{ path("product_plug", {id:product.id}) }}">Éditer</a>
