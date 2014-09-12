@@ -41,7 +41,7 @@ class Parameter
     /**
      * @var string
      *
-     * @ORM\Column(name="addresse", type="string", length=255)
+     * @ORM\Column(name="adresse", type="string", length=255)
      */
     private $adresse;
 

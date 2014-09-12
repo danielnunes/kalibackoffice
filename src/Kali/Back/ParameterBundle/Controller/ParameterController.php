@@ -51,9 +51,11 @@ class ParameterController extends Controller
 
         $form = $this->createForm(new ParameterType(), $parameters);
 
-        $form->handleRequest($request);
+
+        $form->submit($request);
 
         if ($form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($parameters);
             $em->flush();
@@ -61,6 +63,7 @@ class ParameterController extends Controller
             $this->get('session')->getFlashBag()->add(
                 'notice', 'Vos changements ont été sauvegardés!'
             );
+
 
         }
         return $this->render('KaliBackParameterBundle:Parameter:nouveau.html.twig', array('form' => $form->createView(), 'image_url' => $file, 'id' => $parameters ->getId()));
