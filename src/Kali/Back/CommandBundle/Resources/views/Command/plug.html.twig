@@ -3,11 +3,18 @@
 {% block title %}KaliBackCommandBundle:Command:plug{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Command:plug page</h1>
+<h2>
+            Fiche de la commande
+    </h2>
+
+    <p class="text-right">
+        <a class="btn btn-success right" href="{{ path("command.list") }}">Liste des commandes</a>
+    </p>
 <form action="{{ path('command_plug', {id:command.id}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
     {{ form_widget(form) }}
 <div>
-        <input type="submit" value="Modifier" />
+        <input class="btn btn-success" type="submit" value="Enregistrer" />
+        <a href="#" class="btn btn-info" onclick="history.back()">Retour</a>
     </div>
 </form>
 {% endblock %}

@@ -56,7 +56,8 @@ class UserController extends Controller {
                 }
             }
 
-            return $this->redirect("http://front.kali.dev/connexion/0");
+//            return $this->redirect("http://front.kali.dev/connexion/0");
+            return new Response("ok");
     }
     
 

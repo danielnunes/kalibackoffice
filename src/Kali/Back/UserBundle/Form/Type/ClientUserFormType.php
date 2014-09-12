@@ -16,13 +16,17 @@ class ClientUserFormType extends AbstractType
         
         $builder
             ->add('client', new ClientFormType(), array(
-            'mapped' => false
+            'mapped' => false,
+                
+                
         ))
-            ->add('email', 'email', array('label' => 'Email'))
+            ->add('email', 'email', array('label' => 'Email',
+                'attr' => array('class' => 'form-control'),))
             ->add('plainPassword', 'repeated', array(
                 'type' => 'password',
-                'first_options' => array('label' => 'Mot de passe'),
-                'second_options' => array('label' => 'Confirmation'),
+                
+                'first_options' => array('label' => 'Mot de passe', 'attr' => array('class' => 'form-control'),),
+                'second_options' => array('label' => 'Confirmation', 'attr' => array('class' => 'form-control'),),
                 'invalid_message' => 'Les mots de passe ne correspondent pas.'
             ));
             

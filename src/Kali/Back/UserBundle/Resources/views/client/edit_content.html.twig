@@ -1,9 +1,12 @@
+<h2> Fiche du client {{client.firstName}} </h2>
 <form action="{{ path('client.edit', {id:client.id}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
     {{ form_widget(form) }}
     <div>
-        <input type ="email" name = "email" value ="{{client.user.email}}" />
+        
+        <label>Email</label>
+        <input type ="email" name = "email" value ="{{client.user.email}}" class ="form-control" />
         <label>Désactivé ce client</label>
-        <select  name = "enabled" id = "enabled">
+        <select  name = "enabled" id = "enabled" class ="form-control">
             <option value = "true">true</option>
             <option value = "false">false</option>
         </select>
