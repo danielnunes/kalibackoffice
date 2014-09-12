@@ -16,4 +16,12 @@ class SliderController extends Controller
 
         return $sliders;
     }
+    public function getParametersAction()
+    {
+        $parameter = $this->getDoctrine()
+            ->getRepository("KaliBackParameterBundle:Parameter")
+            ->find(1);
+
+        return $parameter;
+    }
 }

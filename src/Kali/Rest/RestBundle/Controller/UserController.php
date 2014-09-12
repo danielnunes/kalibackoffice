@@ -21,10 +21,10 @@ class UserController extends Controller {
     
     public function getloginAction(Request $request) {
         
-            if ("POST" === $request->getMethod()) {
+            if ("GET" === $request->getMethod()) {
                 $em = $this->getDoctrine()->getManager();
                 $pass = $request->get("_password");
-                $user = $em->getRepository("KaliBackUserBundleBundle:User")
+                $user = $em->getRepository("KaliBackUserBundle:User")
                         ->findOneBy(array("email" => $request->get('_username')));
 
                 /* if user exists */
@@ -46,9 +46,10 @@ class UserController extends Controller {
                     /* if the passwords match */
                     if ($cryptedPass == $passData) {
                         $token = new Token($user, $user->getPassword(), 'fos_userbundle', $user->getRoles());
-                        $client = $em->getRepository("KaliBackUserBundle:Client")->findBy(array("user" => $user));
+                        $client = $em->getRepository("KaliBackUserBundle:Client")->findOneBy(array("user" => $user));
+                        
                         /* return client and token */
-                        return $this->redirect("http://front.kali.dev/check_login/" . $client->getId()."/".$token);  
+                        return $this->redirect("http://front.kali.dev/check_login/" . $client->getId());  
                     }
                     else {
                         return $this->redirect("http://front.kali.dev/connexion/0");
