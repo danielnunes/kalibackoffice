@@ -22,12 +22,12 @@ class SliderController extends Controller
         $sliders = $this->getDoctrine()
                 ->getRepository("KaliBackImageBundle:Slider")
                 ->findAll();
-        
+
         $form0 = $this->createForm(new SliderType(), $sliders[0]);
         $form1 = $this->createForm(new SliderType(), $sliders[1]);
         $form2 = $this->createForm(new SliderType(), $sliders[2]);
         $form0->handleRequest($request);
-        
+
         if($form0->isValid()){
             $sliderIntermediaire = $form0->getData();
             $slider = $this->getDoctrine()->getRepository("KaliBackImageBundle:Slider")->find($sliderIntermediaire->getId());

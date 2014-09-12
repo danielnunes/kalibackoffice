@@ -39,7 +39,7 @@ class SenderController extends Controller {
                     'notice', 'Vos changements ont été sauvegardés!'
             );
 
-            return $this->redirect($this->generateUrl("sender_plug", array("id" => $sender->getId())));
+            return $this->redirect($this->generateUrl("sender_list"));
         }
 
         return array(

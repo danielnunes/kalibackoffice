@@ -3,7 +3,7 @@
 {% block title %}KaliBackCommandBundle:Command:list{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Command:list page</h1>
+<h2>Liste des commandes</h2>
     {% for flashMessage in app.session.flashbag.get('notice') %}
         <div class="flash-notice bg-success">
             {{ flashMessage }}
@@ -12,14 +12,18 @@
 
     <table class="table">
         <tr>
+            <th>Id</th>
             <th>Date</th>
+            <th>Client</th>
             <th>Expéditeur</th>
             <th>Prix</th>
             
         </tr>
         {% for command in commands %}
             <tr>
-                <td>{{ command.date|date("y-m-d") }}</td>
+                <td>{{ command.id }}</td>
+                <td>{{ command.date|date("d/m/Y") }}</td>
+                <td>{{ command.user.client.lastname }} {{ command.user.client.firstname }}</td>
                 <td>{{ command.sender.name }}</td>
                 <td>{{ command.price }}</td>
                 

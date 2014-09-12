@@ -21,7 +21,6 @@
             <td>{{ parameter.adresse }}</td>
             <td>
                 <a class="btn btn-xs btn-success" href="{{path("parameter-edit", {id:parameter.id})}}">Editer</a>
-                <a class="btn btn-xs btn-danger" href="{{path("parameter-delete", {id:parameter.id})}}">Supprimer</a>
             </td>
         </tr>
         {% endfor %}

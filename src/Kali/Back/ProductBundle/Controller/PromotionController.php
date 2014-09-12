@@ -53,7 +53,7 @@ class PromotionController extends Controller {
                     'notice', 'Vos changements ont été sauvegardé!'
             );
 
-            return $this->redirect($this->generateUrl("promotion_plug", array("id" => $promotion->getId())));
+            return $this->redirect($this->generateUrl("promotion_list"));
         }
 
         return array(
