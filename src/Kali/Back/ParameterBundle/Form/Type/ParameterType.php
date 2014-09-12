@@ -8,12 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 class ParameterType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('logo', 'text', array(
-                    'label' => "Logo",
-                    'file', 'file', array('image_url'),
-                    'label_attr' => array('class' => 'col-sm-2 control-label'),
-                    'attr' => array('class' => 'form-control'),
-                ))
+        $builder
                 ->add('slogan', 'text', array(
                     'label' => "Slogan",
                     'label_attr' => array('class' => 'col-sm-2 control-label'),
@@ -31,6 +26,13 @@ class ParameterType extends AbstractType {
                     'label_attr' => array('class' => 'col-sm-2 control-label'),
                     'attr' => array('class' => 'form-control'),
                 ));
+        /*
+                ->add('panier', 'checkbox', array(
+                    'label'     => 'Panier',
+                    'required'  => false,
+                ));
+       */
+
     }
 
     public function getName() {

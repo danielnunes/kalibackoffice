@@ -42,15 +42,19 @@ class ParameterController extends Controller
             $parameters = $this->getDoctrine()
                 ->getRepository("KaliBackParameterBundle:Parameter")
                 ->find($id);
+
         } else {
             $parameters = new Parameter();
+
         }
+        $file = 'http://back.kali.dev/img/logo.png';
+
         $form = $this->createForm(new ParameterType(), $parameters);
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
             $em->persist($parameters);
             $em->flush();
 
@@ -58,30 +62,8 @@ class ParameterController extends Controller
                 'notice', 'Vos changements ont été sauvegardés!'
             );
 
-            return $this->redirect($this->generateUrl("parameters"));
         }
-
-            return $this->render('KaliBackParameterBundle:Parameter:nouveau.html.twig', array('form' => $form->createView()
-            )
-        );
-
+        return $this->render('KaliBackParameterBundle:Parameter:nouveau.html.twig', array('form' => $form->createView(), 'image_url' => $file, 'id' => $parameters ->getId()));
     }
 
-    /**
-     * @Route("parameter-delete/{id}", name="parameter-delete")
-     *
-     */
-    public function deleteAction($id){
-
-        $parameter = $this->getDoctrine()
-            ->getRepository("KaliBackParameterBundle:Parameter")
-            ->find($id);
-
-
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($parameter);
-        $em->flush();
-        return $this->redirect($this->generateUrl("parameters"));
-
-    }
 }
